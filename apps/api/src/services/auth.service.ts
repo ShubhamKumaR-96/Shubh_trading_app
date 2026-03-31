@@ -41,7 +41,7 @@ export const loginUser=async(email:string,password:string)=>{
         throw new Error("Invalid crendentials")
     }
 
-    const isValidPassword=await bcrypt.hash(password,user.password)
+    const isValidPassword=await bcrypt.compare(password,user.password)
 
     if(!isValidPassword){
         throw new Error("Inavlid crendentials")
