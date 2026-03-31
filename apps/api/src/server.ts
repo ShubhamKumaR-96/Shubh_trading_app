@@ -3,6 +3,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
 import dotenv from 'dotenv'
+import authRoutes from './routes/auth.routes'
 
 dotenv.config({ path: '../../.env' })
 
@@ -33,6 +34,8 @@ app.get('/health', (req, res) => {
     timestamp: new Date().toISOString()
   })
 })
+
+app.use('/api/auth',authRoutes)
 
 // ─────────────────────────────────────────
 // SERVER START
